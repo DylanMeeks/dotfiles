@@ -1,0 +1,69 @@
+URxvt*scrollBar: false
+URxvt*foreground:  White
+URxvt.internalBorder:  15
+
+urxvt*depth: 32
+# Transparency bullshit
+urxvt*background: rgba:0000/0000/0200/c800
+
+Xft*dpi:                96
+Xft*antialias:          true
+# URxvt.font: xft: Source Han Sans HW SC,思源黑体 HW:size=18
+URxvt.font: xft: Fira Code:size=14
+
+
+#define nord0 #2E3440
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #4C566A
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+! special
+*.foreground:   #e6e6e6
+*.background:   #1e1e1e
+*.cursorColor:  #e6e6e6
+# *fading: 0
+# *fadeColor: nord3
+
+! black
+*.color0: #292929
+*.color8: #353535
+
+! red
+*.color1: #e44336f
+*.color9: #d85a7a
+
+! green
+*.color2: #24d39d
+*.color10: #3ec493
+
+! yellow 
+*.color3: #eda685
+*.color11: #d1a38e
+
+! blue
+*.color4: #00a5af
+*.color12: #0c949c
+
+! magenta
+*.color5: #b367cf
+*.color13: #9d6bbe
+
+! cyan
+*.color6: #00a5af
+*.color14: #128990
+
+! white
+*.color7: #e6e6e6
+*.color15: #e6e6e6
