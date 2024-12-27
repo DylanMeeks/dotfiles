@@ -1,0 +1,9 @@
+[user]
+	email = dylan.meeks@aol.com
+	name = Dylan Meeks
+[core]
+	autocrlf = input
+[init]
+	defaultbranch = master
+[pull]
+	rebase = true

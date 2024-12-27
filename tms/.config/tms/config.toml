@@ -1,0 +1,7 @@
+[[search_dirs]]
+path = "/home/dylanm/.config"
+depth = 10
+
+[[search_dirs]]
+path = "/home/dylanm/Documents"
+depth = 10
