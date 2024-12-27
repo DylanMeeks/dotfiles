@@ -1,0 +1,3 @@
+[submodule "stow/nvim/.config/nvim-config"]
+	path = stow/nvim/.config/nvim-config
+	url = git@github.com:DylanMeeks/nvim-config.git
