@@ -149,5 +149,8 @@ export PATH=$PATH:~/go/bin/
 
 export PATH=$PATH:~/.local/bin/
 
+# pywal16
+(cat ~/.cache/wal/sequences &)
+
 # ZSH Syntax Highlighting - must be at the end of .zshrc!
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
