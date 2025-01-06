@@ -79,12 +79,32 @@ autoload -Uz compinit
 autoload -Uz vcs_info # Git
 
 # Style control for completion system and VCS
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' menu select
-zstyle ':completion::complete:*' gain-privileges 1
-zstyle ':completion:*' rehash true                      # Rehash so compinit can automatically find new executables in $PATH
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats 'on %F{red} %b%f '    # Set up Git Branch details into prompt
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# zstyle ':completion:*' menu select
+# zstyle ':completion::complete:*' gain-privileges 1
+# zstyle ':completion:*' rehash true                      # Rehash so compinit can automatically find new executables in $PATH
+# zstyle ':vcs_info:*' enable git
+# zstyle ':vcs_info:git:*' formats 'on %F{red} %b%f '    # Set up Git Branch details into prompt
+#
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# custom fzf flags
+# NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+# To make fzf-tab follow FZF_DEFAULT_OPTS.
+# NOTE: This may lead to unexpected behavior since some flags break this plugin. See Aloxaf/fzf-tab#455.
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # Match dotfiles without explicitly specifying the dot
 compinit
@@ -96,7 +116,8 @@ precmd() { vcs_info }
 # Prompt Appearance
 setopt PROMPT_SUBST
 
-PS1='%B%F{blue}❬%n%f@%F{blue}%m❭%f %F{blue} %1~%f%b ${vcs_info_msg_0_} '
+# PS1='%B%F{blue}❬%n%f@%F{blue}%m❭%f %F{blue} %1~%f%b ${vcs_info_msg_0_} '
+source ~/.zsh/geometry/geometry.zsh
 
 # ZSH profile
 # source ~/.profile
@@ -111,26 +132,22 @@ source /usr/share/fzf/shell/key-bindings.zsh
 # FZF zsh plugin
 source ~/.zsh/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
 
+# FZF-tab
+source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
+
 # ZSH Autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# source <(fzf --zsh)
+source <(fzf --zsh)
 
-# ZSH Syntax Highlighting - must be at the end of .zshrc!
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# ZSH completions
+fpath=(~/.zsh/zsh-completions/src $fpath)
 
 export PATH=$PATH:~/.cargo/bin/
 
 export PATH=$PATH:~/go/bin/
 
-export PATH=$PATH:/opt/idea-IC-242.23339.11/bin
-
 export PATH=$PATH:~/.local/bin/
 
-export PATH=$PATH:~/Documents/tools/ghostty-lsp/target/release/ghostty-lsp
-
-# fix applications not appearing in launcher
-emulate sh -c 'source /etc/profile'
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+# ZSH Syntax Highlighting - must be at the end of .zshrc!
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
