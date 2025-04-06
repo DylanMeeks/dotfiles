@@ -146,7 +146,7 @@ fpath=(~/.zsh/zsh-completions/src $fpath)
 export PATH=$PATH:~/.cargo/bin/
 
 # zig
-# export PATH=/home/dylanm/Documents/tools/zig/zig-linux-x86_64-0.14.0:$PATH
+export PATH=$HOME/Documents/tools/zig/zig-linux-x86_64-0.14.0:$PATH
 
 # Rust setup
 . $HOME/.cargo/env
@@ -162,3 +162,12 @@ export PATH=$PATH:~/.local/bin/
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 . "$HOME/.local/bin/env"
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/home/dylanm/.opam/opam-init/init.zsh' ]] || source '/home/dylanm/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
