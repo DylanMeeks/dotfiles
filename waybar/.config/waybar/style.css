@@ -10,6 +10,7 @@
 Waybar Config File by Arfan Zubi
 
 */
+@import "colors.css";
 
 * {
     font-family: 'FiraCode Nerd Font', sans-serif;

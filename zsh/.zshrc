@@ -140,13 +140,12 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source <(fzf --zsh)
 
+source <(COMPLETE=zsh jj)
+
 # ZSH completions
 fpath=(~/.zsh/zsh-completions/src $fpath)
 
 export PATH=$PATH:~/.cargo/bin/
-
-# zig
-export PATH=$HOME/Documents/tools/zig/zig-linux-x86_64-0.14.0:$PATH
 
 # Rust setup
 . $HOME/.cargo/env
@@ -171,3 +170,13 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/dylanm/.opam/opam-init/init.zsh' ]] || source '/home/dylanm/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+export GPG_TTY=$(tty)
+
+# pnpm
+export PNPM_HOME="/home/dylanm/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

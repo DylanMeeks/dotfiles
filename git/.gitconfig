@@ -1,11 +1,22 @@
 [user]
 	email = dylan.meeks@aol.com
 	name = Dylan Meeks
+	signingkey = FDA3EFEF2E8DF9D9
 [core]
 	autocrlf = input
 [init]
 	defaultbranch = master
+	templateDir = /home/dylanm/.git-templates/git-secrets
 [pull]
 	rebase = true
 [rebase]
 	updateRefs = true
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

@@ -1,15 +1,23 @@
 #!/bin/bash
 
-WALLPAPER_DIRECTORY=~/Documents/wallpapers
+# Check if swww-daemon is running
+if ! pgrep -x "swww-daemon" > /dev/null; then
+    swww-daemon & # Start swww-daemon in the background
+    sleep 1 # Give swww-daemon a moment to start
+fi
 
-WALLPAPER=$(find "$WALLPAPER_DIRECTORY" -type f | shuf -n 1)
+WALLPAPER_DIRECTORY=$HOME/Documents/wallpapers/
 
-wal -i $WALLPAPER -n
+WALLPAPER=$(find "$WALLPAPER_DIRECTORY" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) | shuf -n 1)
 
-hyprctl hyprpaper preload "$WALLPAPER"
-hyprctl hyprpaper wallpaper "eDP-1,$WALLPAPER"
+# wal -i $WALLPAPER -n
+
+# hyprctl hyprpaper preload "$WALLPAPER"
+# hyprctl hyprpaper wallpaper "eDP-1,$WALLPAPER"
+
+matugen image $WALLPAPER
 
 sleep 1
 
-hyprctl hyprpaper unload unused
+# hyprctl hyprpaper unload unused
 
