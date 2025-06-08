@@ -15,7 +15,10 @@ WALLPAPER=$(find "$WALLPAPER_DIRECTORY" -type f \( -iname "*.jpg" -o -iname "*.j
 # hyprctl hyprpaper preload "$WALLPAPER"
 # hyprctl hyprpaper wallpaper "eDP-1,$WALLPAPER"
 
+echo $WALLPAPER
+
 matugen image $WALLPAPER
+swww img $WALLPAPER --transition-type none
 
 sleep 1
 
