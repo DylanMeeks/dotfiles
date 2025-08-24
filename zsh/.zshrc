@@ -30,6 +30,7 @@ export PATH=$PATH:~/.cargo/bin/
 
 # go
 export PATH=$PATH:~/go/bin/
+export PATH=$PATH:/usr/local/go/bin/
 
 # Block cursor
 cursor_mode() {
@@ -56,7 +57,7 @@ cursor_mode
 
 # Vim keybinds
 bindkey -v
-export KEYTIMEOUT=1
+# export KEYTIMEOUT=1
 
 zmodload zsh/complist
 bindkey -M menuselect 'h' vi-backward-char
@@ -66,7 +67,7 @@ bindkey -M menuselect 'l' vi-forward-char
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+bindkey -M vicmd v edit-command-line # v in normal mode to use EDITOR to edit command
 
 autoload -Uz select-bracketed select-quoted
 zle -N select-quoted
@@ -81,13 +82,22 @@ for km in viopp visual; do
   done
 done
 
-# Plugins
-autoload -U compinit; compinit
-_comp_options+=(globdots)
-
+# Plugins and Integrations
 fpath=("$HOME/.zsh/zsh-completions/src" $fpath)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
+
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
+
+# "lazy load" jj completion to speed up startup
+jj() {
+    if [ -z "$JJ_LOADED" ]; then
+        source <(command jj util completion zsh)
+        JJ_LOADED=true
+    fi
+    command jj "$@"
+}
 
 source ~/.zsh/geometry/geometry.zsh
 GEOMETRY_STATUS_SYMBOL="▲"             # default prompt symbol
@@ -100,6 +110,11 @@ GEOMETRY_GIT_SYMBOL_REBASE="\uE0A0"    # set the default rebase symbol to the po
 GEOMETRY_GIT_SYMBOL_STASHES=x          # change the git stash indicator to `x`
 GEOMETRY_GIT_COLOR_STASHES=blue        # change the git stash color to blue
 GEOMETRY_GIT_NO_COMMITS_MESSAGE=""     # hide the 'no commits' message in new repositories
+
+autoload -Uz compinit
+autoload -Uz vcs_info
+compinit
+_comp_options+=(globdots)
 
 # this must go last
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
