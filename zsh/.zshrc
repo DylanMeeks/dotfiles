@@ -1,43 +1,12 @@
-#
-# ███████╗███████╗██╗  ██╗██████╗  ██████╗
-# ╚══███╔╝██╔════╝██║  ██║██╔══██╗██╔════╝
-#   ███╔╝ ███████╗███████║██████╔╝██║
-#  ███╔╝  ╚════██║██╔══██║██╔══██╗██║
-# ███████╗███████║██║  ██║██║  ██║╚██████╗
-# ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝
-#
-# ZSH Config File by Arfan Zubi
-
-
 # Autostart Hyprland at Login
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     exec Hyprland
 fi
 
-# Aliases
-# alias q='exit'
-# alias ..='cd ..'
-# alias ls='exa -l -F --icons --hyperlink'
-# alias l='ls -l'
-# alias la='ls -a'
-# alias lla='ls -la'
-# alias t='tree'
-# alias rm='rm -v'
-# alias open='xdg-open'
-
-alias gs='git status'
-alias ga='git add -A'
-alias gc='git commit'
-alias gpll='git pull'
-alias gpsh='git push'
-alias gd='git diff'
-alias gl='git log --stat --graph --decorate --oneline'
-
 alias lock='swaylock'
-alias standby='systemctl suspend'
 
 alias ff='fastfetch'
-alias z='zathura'
+alias za='zathura'
 
 # Colored output
 alias ls='ls -laGH --color=auto'
@@ -50,7 +19,7 @@ alias mx="zellij --layout $HOME/.config/zellij/layout.kdl"
 
 # Colored pagers
 export LESS='-R --use-color -Dd+r$Du+b'
-export MANPAGER='less -R --use-color -Dd+r -Du+b'
+export MANPAGER='nvim +Man!'
 
 # Setting Default Editor
 export EDITOR='nvim'
@@ -102,9 +71,9 @@ autoload -Uz vcs_info # Git
 compinit
 _comp_options+=(globdots)
 
-# carapace auto-completion
-# carapace is a go bin so this is here
 export PATH=$PATH:~/go/bin/
+
+# carapace auto-completion
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 export CARAPACE_MATCH=1 # case insensitive
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
@@ -150,6 +119,14 @@ fpath=(~/.zsh/zsh-completions/src $fpath)
 export PATH=$PATH:~/.cargo/bin/
 . $HOME/.cargo/env
 
+export PATH=$PATH:/usr/local/go/bin
+
+export PATH=/home/dylanm/.nimble/bin:$PATH
+
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
 
 export PATH=$PATH:~/.local/bin/
 
@@ -157,7 +134,6 @@ export PATH=$PATH:~/.local/bin/
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 . "$HOME/.local/bin/env"
-
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -169,6 +145,7 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export GPG_TTY=$(tty)
 
+
 # pnpm
 export PNPM_HOME="/home/dylanm/.local/share/pnpm"
 case ":$PATH:" in
@@ -176,3 +153,25 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Prevent blinking cursor.
+function __set_beam_cursor {
+    echo -ne '\e[6 q'
+}
+
+function __set_block_cursor {
+    echo -ne '\e[2 q'
+}
+
+function zle-keymap-select {
+  case $KEYMAP in
+    vicmd) __set_block_cursor;;
+    viins|main) __set_beam_cursor;;
+  esac
+}
+zle -N zle-keymap-select
+
+precmd_functions+=(__set_block_cursor)
+
+
+eval "$(zoxide init zsh)"

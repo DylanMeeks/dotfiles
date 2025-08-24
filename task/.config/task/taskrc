@@ -8,6 +8,11 @@ news.version=3.3.0
 data.location=~/.local/share/task
 hooks.location=~/.config/task/hooks
 
+
+sync.server.url=https://tw.dylanmeeks.engineer
+sync.server.client_id=de2a970e-d987-49fd-9967-a5ddf826f731
+sync.encryption_secret=your-encryption-secret
+
 # Color theme (uncomment one to use)
 #include light-16.theme
 #include light-256.theme
