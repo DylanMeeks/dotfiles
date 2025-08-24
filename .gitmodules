@@ -1,6 +1,18 @@
-[submodule "stow/nvim/.config/nvim-config"]
-	path = stow/nvim/.config/nvim-config
-	url = git@github.com:DylanMeeks/nvim-config.git
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = https://github.com/DylanMeeks/nvim.git
+[submodule "zsh/.zsh/fzf-zsh-plugin"]
+	path = zsh/.zsh/fzf-zsh-plugin
+	url = git@github.com:unixorn/fzf-zsh-plugin.git
+[submodule "zsh/.zsh/geometry"]
+	path = zsh/.zsh/geometry
+	url = git@github.com:geometry-zsh/geometry
+[submodule "zsh/.zsh/zsh-autosuggestions"]
+	path = zsh/.zsh/zsh-autosuggestions
+	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "zsh/.zsh/zsh-completions"]
+	path = zsh/.zsh/zsh-completions
+	url = git@github.com:zsh-users/zsh-completions.git
+[submodule "zsh/.zsh/zsh-syntax-highlighting"]
+	path = zsh/.zsh/zsh-syntax-highlighting
+	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
