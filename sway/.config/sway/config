@@ -20,16 +20,13 @@ set $menu wmenu-run
 # Your preferred web browser
 set $browser firefox
 
-
-
-### Window Rules
-default_border pixel 1
-default_floating_border pixel 1
+### Font
+font pango:Cascadia Code NF Regular 8
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg "$(find "$HOME/Documents/wallpapers" -type f -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" | shuf -n 1)" fill
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
 exec ~/.config/sway/wallpaper.sh
 #
 # Example configuration:
@@ -232,9 +229,11 @@ bindsym $mod+r mode "resize"
 bar {
     position top
 
+    status_command i3status
+
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %H:%M'; do sleep 1; done
+    # status_command while date +'%Y-%m-%d %H:%M'; do sleep 1; done
 
     colors {
         statusline #ffffff
@@ -242,5 +241,10 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+### Window Rules
+default_border pixel 1
+default_floating_border pixel 1
+for_window [class="^.*"] border pixel 2
 
 include /etc/sway/config.d/*

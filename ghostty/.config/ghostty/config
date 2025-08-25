@@ -4,7 +4,7 @@ font-family = "Cascadia Code NF"
 #font-family-bold = "Cascadia Code NF Bold"
 #font-family-italic = "Cascadia Code NF Italic"
 #font-family-bold-italic = "Cascadia Code NF Bold Italic"
-font-size = 16
+font-size = 8
 font-feature = ss01
 
 # theme = "Kanagawa Dragon"
