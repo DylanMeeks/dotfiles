@@ -1,3 +1,5 @@
+# autostart sway
+[ "$(tty)" = "/dev/tty1" ] && exec sway
 
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000
