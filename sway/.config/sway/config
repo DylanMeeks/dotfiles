@@ -1,7 +1,11 @@
 # Read `man 5 sway` for a complete reference.
 
+### System Startup
+# Notification daemon
+exec mako
+# exec waybar
+
 ### Variables
-#
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -13,26 +17,38 @@ set $right l
 set $term ghostty
 # Your preferred application launcher
 set $menu wmenu-run
+# Your preferred web browser
+set $browser firefox
+
+
+
+### Window Rules
+default_border pixel 1
+default_floating_border pixel 1
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg "$(find "$HOME/Documents/wallpapers" -type f -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" | shuf -n 1)" fill
+exec ~/.config/sway/wallpaper.sh
 #
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+output eDP-1 mode 2880x1920@120.000Hz
+# If I ever want to setup multiple monitors this will check if the laptop is closed and disable the built-in monitor
+# exec_always ~/.config/sway/clamshell.sh
 
 ### Idle configuration
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -51,6 +67,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input type:touchpad {
+    tap enabled
+    tap_button_map lrm
+    natural_scroll enabled
+    middle_emulation enabled
+}
 
 ### Key bindings
 #
@@ -212,7 +234,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    status_command while date +'%Y-%m-%d %H:%M'; do sleep 1; done
 
     colors {
         statusline #ffffff
