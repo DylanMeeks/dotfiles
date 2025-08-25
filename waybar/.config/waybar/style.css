@@ -1,85 +1,90 @@
-/*
-
-██╗    ██╗ █████╗ ██╗   ██╗██████╗  █████╗ ██████╗ 
-██║    ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-██║ █╗ ██║███████║ ╚████╔╝ ██████╔╝███████║██████╔╝
-██║███╗██║██╔══██║  ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-╚███╔███╔╝██║  ██║   ██║   ██████╔╝██║  ██║██║  ██║
- ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-
-Waybar Config File by Arfan Zubi
-
-*/
-@import "colors.css";
-
 * {
-    font-family: 'FiraCode Nerd Font', sans-serif;
-    font-size: 16px;
+    border: none;
+    border-radius: 0;
     min-height: 0;
+    font-family: "Cascadia Code NF";
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0;
 }
 
 window#waybar {
-    background: rgba(45, 53, 59, 0.9);
-    border: 2px solid rgba(61, 72, 77, 0.9);
-    color: #D3C6AA;
+    background: #1d1d1d;
+    border-bottom: 2px solid #4b4239;
 }
 
-#window, #clock, #system, #keyboard, #hardware {
-    margin: 5px;
-    padding: 0 10px;
-    background-color: #272E33;
-    border: 2px solid #3D484D;
-    border-radius: 15px;
+tooltip {
+    background-color: #101010;
+    border: 2px solid #766451;
 }
 
-#window {
-    font-weight: bold;
-}
-
-#clock {
-    background-color: #A7C080;
-    border: 2px solid #2D353B;
-    color: #2D353B;
-    font-weight: bold;
+#clock,
+#tray,
+#cpu,
+#memory,
+#backlight,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio {
+    margin: 6px 6px 6px 0px;
+    padding: 6px 10px;
 }
 
 #workspaces {
-    margin-right: 10px;
-    font-weight: bold;
+    border-radius: 8px;
+    background-color: #322d28;
+    margin: 6px 0px 6px 6px;
+    border: 2px solid #625343;
 }
 
 #workspaces button {
-    border: none;
-    border-radius: 0;
-    color: #D3C6AA;
-    transition: all 0.3s ease-in-out;
-}
-
-#workspaces button.active {
-    background-color: #A7C080;
-    color: #2D353B;
-    transition: all 0.3s ease-in-out;
+    all: initial;
+    min-width: 0;
+    box-shadow: inset 0 -3px transparent;
+    padding: 4px 6px;
+    color: #7a7367;
 }
 
 #workspaces button.focused {
-    background-color: #A7C080;
+    color: #ddc7a1;
 }
 
-#workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-    background: #3D484D;
-    border: none;
-    color: #D3C6AA;
+#workspaces button.urgent {
+    background-color: #e78a4e;
+    color: #1d2021;
 }
 
-#keyboard-state {
-    margin-right: 7px;
+#clock {
+    border-radius: 8px;
+    background-color: #322d28;
+    border: 2px solid #625343;
+    color: #d4be98;
 }
 
-#custom-wlogout {
-    margin-left: 7px;
-    padding: 0 15px;
-    background-color: #A7C080;
-    color: #2D353B;
+#tray,
+#cpu,
+#memory,
+#network,
+#bluetooth,
+#battery,
+#backlight,
+#pulseaudio {
+    border-radius: 8px;
+    background-color: #322d28;
+    border: 2px solid #625343;
+    color: #d4be98;
+}
+
+#cpu.critical,
+#memory.critical {
+    background-color: #c9af82;
+    border: 2px solid #917a53;
+    color: #da4343;
+}
+
+#battery.critical {
+    background-color: #c9af82;
+    border: 2px solid #917a53;
+    color: #da4343;
 }
