@@ -8,7 +8,7 @@ SAVEHIST=10000
 setopt inc_append_history
 setopt HIST_SAVE_NO_DUPS
 
-alias ls='las --color=auto -HGv'
+alias ls='ls -la --color=auto -HGv'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias ip='ip --color=auto'
@@ -106,7 +106,7 @@ GEOMETRY_STATUS_COLOR_ERROR="red"      # prompt symbol color when exit value is 
 GEOMETRY_STATUS_COLOR="default"        # prompt symbol color
 GEOMETRY_STATUS_COLOR_ROOT="red"       # root prompt symbol color
 GEOMETRY_EXITCODE_COLOR="red"          # exit code color
-GEOMETRY_GIT_SYMBOL_REBASE="\uE0A0"    # set the default rebase symbol to the powerline symbol î 
+GEOMETRY_GIT_SYMBOL_REBASE="\uE0A0"    # set the default rebase symbol to the powerline symbol Ã®ÂÂ 
 GEOMETRY_GIT_SYMBOL_STASHES=x          # change the git stash indicator to `x`
 GEOMETRY_GIT_COLOR_STASHES=blue        # change the git stash color to blue
 GEOMETRY_GIT_NO_COMMITS_MESSAGE=""     # hide the 'no commits' message in new repositories
@@ -118,4 +118,5 @@ _comp_options+=(globdots)
 
 # this must go last
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 

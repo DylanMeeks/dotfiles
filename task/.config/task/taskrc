@@ -1,17 +1,10 @@
-# [Created by task 3.3.0 12/28/2024 11:06:54]
-data.location=/home/dylanm/.task
-news.version=3.3.0
-
-# To use the default location of the XDG directories,
-# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
-
 data.location=~/.local/share/task
 hooks.location=~/.config/task/hooks
 
 
-sync.server.url=https://tw.dylanmeeks.engineer
-sync.server.client_id=de2a970e-d987-49fd-9967-a5ddf826f731
-sync.encryption_secret=your-encryption-secret
+sync.server.url=https:\/\/tw.dylanmeeks.engineer
+sync.server.client_id=2305e898-26c3-4b0f-88c1-d493c771b71c
+sync.encryption_secret=5qZK9YH9asaccBFP8HEUlWgrqrb+jFWaEH81g7wUsuQ=
 
 # Color theme (uncomment one to use)
 #include light-16.theme
@@ -30,3 +23,4 @@ sync.encryption_secret=your-encryption-secret
 #include solarized-light-256.theme
 #include no-color.theme
 
+recurrence=on

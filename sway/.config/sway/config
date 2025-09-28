@@ -21,10 +21,10 @@ set $menu wmenu-run
 set $browser firefox
 
 ### GTK
-set $system_theme 'Arc-Dark'
-set $system_icons 'Numix-Square'
+set $system_theme 'adw-gtk3-dark'
+set $system_icons 'adw-gtk3-dark'
 set $system_dpi_scaling_factor 1.0
-set $cursor_size 10
+set $cursor_size 12
 set $cursor_theme Adwaita
 # This is the only place where you must set GTK scaling
 set $gnome-schema org.gnome.desktop.interface
@@ -39,9 +39,6 @@ exec_always {
 # Mouse
 seat seat0 xcursor_theme $cursor_theme $cursor_size
 
-# Fonts (For sway window titles only)
-font pango:$titlebar_font $titlebar_text_size
-
 ### Font
 font pango:Cascadia Code NF Regular 8
 
@@ -49,8 +46,8 @@ font pango:Cascadia Code NF Regular 8
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
-exec ~/.config/sway/wallpaper.sh
-#
+exec_always ~/.config/sway/wallpaper.sh
+
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -105,6 +102,9 @@ input type:touchpad {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # Start your browser
+    bindsym $mod+i exec $browser
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

@@ -1,21 +1,24 @@
 
-font-family = "Cascadia Code NF"
+font-family             = "Cascadia Code NF"
+font-family-bold        = "Cascadia Code NF Bold"
+font-family-italic      = "Cascadia Code NF Italic"
+font-family-bold-italic = "Cascadia Code NF Bold Italic"
 #font-family = "Fira Code Regular"
-#font-family-bold = "Cascadia Code NF Bold"
-#font-family-italic = "Cascadia Code NF Italic"
-#font-family-bold-italic = "Cascadia Code NF Bold Italic"
+#font-family-bold = "Fira Code Bold"
+#font-family-italic = "Fira Code Italic"
+#font-family-bold-italic = "Fira Code Bold Italic"
 font-size = 8
 font-feature = ss01
 
 # theme = "Kanagawa Dragon"
-theme = "GruvboxDarkHard"
+# theme = "GruvboxDarkHard"
+theme = "Gruber Darker"
 
 shell-integration-features = no-cursor, no-sudo
 
 cursor-style = block
-cursor-style-blink = true
 
-background-opacity = 0.75
+# background-opacity = 0.75
 
 window-decoration = false
 
